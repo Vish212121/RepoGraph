@@ -1,0 +1,23 @@
+{
+  "repository": "pallets/flask",
+  "commit_sha": "d086db856be187255b8ec61ef409357393020f32",
+  "default_branch": "main",
+  "snapshot_id": "pallets-flask-d086db856be1",
+  "captured_at": "2026-10-18T07:16:10.839165Z",
+  "source_url": "https://github.com/pallets/flask",
+  "counts": {
+    "files": 236,
+    "commits": 27,
+    "people": 4,
+    "snapshot_files": 236,
+    "changed_files": 105,
+    "authored_by": 25,
+    "committed_by": 25,
+    "parent_edges": 31,
+    "pull_requests": 0,
+    "pull_request_files": 0,
+    "reviews": 0,
+    "pull_request_authors": 0,
+    "review_people": 0
+  }
+}

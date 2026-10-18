@@ -1,0 +1,18 @@
+services:
+  falkordb:
+    image: falkordb/falkordb:v4.20.4
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+      - "3000:3000"
+    volumes:
+      - falkordb_data:/var/lib/falkordb/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -h 127.0.0.1 -p 6379 PING | grep -q PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 10s
+
+volumes:
+  falkordb_data:

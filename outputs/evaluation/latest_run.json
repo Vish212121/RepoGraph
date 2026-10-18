@@ -1,0 +1,573 @@
+{
+  "fixture": "data\\evaluation\\golden_questions.jsonl",
+  "execution_mode": "mcp",
+  "summary_by_system": {
+    "repobrain": {
+      "cases": 8,
+      "answer_fact_accuracy": 0.875,
+      "evidence_fact_accuracy": 1.0,
+      "source_coverage": 1.0,
+      "tool_selection_accuracy": 1.0,
+      "relationship_proof_coverage": 1.0,
+      "graph_proof_accuracy": 1.0,
+      "average_latency_ms": 8879.84,
+      "p50_latency_ms": 7306.81,
+      "p95_latency_ms": 17291.41
+    },
+    "baseline-no-graph": {
+      "cases": 8,
+      "answer_fact_accuracy": 0.0,
+      "evidence_fact_accuracy": 0.0,
+      "source_coverage": 0.0,
+      "tool_selection_accuracy": 0.0,
+      "relationship_proof_coverage": 0.0,
+      "graph_proof_accuracy": 0.0,
+      "average_latency_ms": 2998.7,
+      "p50_latency_ms": 2263.08,
+      "p95_latency_ms": 5940.91
+    }
+  },
+  "results": [
+    {
+      "case_id": "file-contributors-app",
+      "system": "repobrain",
+      "question": "Which contributors changed files matching app.py?",
+      "category": "change-history",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "Contributors and commit-level changes in the matching files:\n1. David Lord (davidism); commits=6; files=src/flask/app.py, src/flask/sansio/app.py\n2. lkk7 (lkk7); commits=1; files=src/flask/app.py\n\nChange summaries:\n- src/flask/sansio/app.py at d086db856be187255b8ec61ef409357393020f32: fix typing; status=modified, +2/-1\n- src/flask/app.py at 329c32b916938d33fec41f40eb7ed854bf0b3e2b: fix dev; status=modified, +31/-34\n- src/flask/app.py at d73fa1cdcbd8b1465c151db8924ba58b1dd14e35: fix docs ref; status=modified, +2/-2\n- src/flask/app.py at 05e9c6bd630ecf4ec0ec884b1fc7901663737bc7: Fix `.partition(\":\")` usage on potential IPv6 addresses (#6096); status=modified, +7/-4\n- src/flask/app.py at 514fc6b3e8402e4c646d5284e97a4f0ab50a7c4b: Merge branch 'stable'; status=modified, +2/-2\n- src/flask/app.py at 81798b406f97ffe4795d2c9fc18db7db744a96dc: fix typos; status=modified, +2/-2\n- src/flask/app.py at 7203feabf723edae0286ae5dc64fec8ac4c91735: Fix IPv6 server name parsing; status=modified, +7/-4\n\nEvidence: tool=file_contributors; snapshot_id=pallets-flask-d086db856be1; commit-level metadata, not line-level patch content",
+      "answer_match": true,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "file_contributors",
+      "actual_tool": "file_contributors",
+      "execution_mode": "mcp",
+      "latency_ms": 8960.34,
+      "tool_match": true,
+      "requires_relationship_proof": true,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 9,
+        "expected_answer_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "expected_evidence_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "max_hops": 0,
+        "relationships_seen": [],
+        "required_relationships": [
+          "CHANGED",
+          "AUTHORED_BY"
+        ]
+      }
+    },
+    {
+      "case_id": "history-app",
+      "system": "repobrain",
+      "question": "Show the history of src/flask/app.py",
+      "category": "change-history",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "History of src/flask/app.py:\n\n1. Added, 34 lines deleted, 329c32b916938d33fec41f40eb7ed854bf0b3e2b\n2. Added, 2 lines deleted, d73fa1cdcbd8b1465c151db8924ba58b1dd14e35\n3. Added, 7 lines deleted, 05e9c6bd630ecf4ec0ec884b1fc7901663737bc7\n4. Modified, 2 lines added, 2 lines deleted, 514fc6b3e8402e4c646d5284e97a4f0ab50a7c4b\n5. Added, 2 lines deleted, 81798b406f97ffe4795d2c9fc18db7db744a96dc\n6. Added, 7 lines deleted, 7203feabf723edae0286ae5dc64fec8ac4c91735\n\nEvidence:\nGraph tool: tool=file_history\nSnapshot ID: pallets-flask-d086db856be1",
+      "answer_match": false,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "file_history",
+      "actual_tool": "file_history",
+      "execution_mode": "mcp",
+      "latency_ms": 17291.41,
+      "tool_match": true,
+      "requires_relationship_proof": false,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 7,
+        "expected_answer_facts": [
+          "davidism"
+        ],
+        "expected_evidence_facts": [
+          "davidism"
+        ],
+        "max_hops": 0,
+        "relationships_seen": [],
+        "required_relationships": []
+      }
+    },
+    {
+      "case_id": "contributor-files",
+      "system": "repobrain",
+      "question": "What files did davidism change?",
+      "category": "change-history",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "The graph tool 'contributor_changes' returned 20 evidence row(s) for snapshot pallets-flask-d086db856be1. The first result(s) are: contributor=davidism, display_name=David Lord, commit_sha=d086db856be187255b8ec61ef409357393020f32, commit_subject=fix typing, authored_at=2026-10-07T14:02:54Z, file_path=src/flask/sansio/app.py, change_status=modified, additions=2, deletions=1, commit_url=https://github.com/pallets/flask/commit/d086db856be187255b8ec61ef409357393020f32, file_url=https://github.com/pallets/flask/blob/d086db856be187255b8ec61ef409357393020f32/src/flask/sansio/app.py; contributor=davidism, display_name=David Lord, commit_sha=329c32b916938d33fec41f40eb7ed854bf0b3e2b, commit_subject=fix dev, authored_at=2026-10-07T14:01:40Z, file_path=src/flask/app.py, change_status=modified, additions=31, deletions=34, commit_url=https://github.com/pallets/flask/commit/329c32b916938d33fec41f40eb7ed854bf0b3e2b, file_url=https://github.com/pallets/flask/blob/d086db856be187255b8ec61ef409357393020f32/src/flask/app.py; contributor=davidism, display_name=David Lord, commit_sha=329c32b916938d33fec41f40eb7ed854bf0b3e2b, commit_subject=fix dev, authored_at=2026-10-07T14:01:40Z, file_path=tests/test_testing.py, change_status=modified, additions=2, deletions=2, commit_url=https://github.com/pallets/flask/commit/329c32b916938d33fec41f40eb7ed854bf0b3e2b, file_url=https://github.com/pallets/flask/blob/d086db856be187255b8ec61ef409357393020f32/tests/test_testing.py; contributor=davidism, display_name=David Lord, commit_sha=41cb747cd5a9b43da43bf809ad974722542603db, commit_subject=fix link, authored_at=2026-10-07T13:56:56Z, file_path=CHANGES.rst, change_status=modified, additions=3, deletions=3, commit_url=https://github.com/pallets/flask/commit/41cb747cd5a9b43da43bf809ad974722542603db, file_url=https://github.com/pallets/flask/blob/d086db856be187255b8ec61ef409357393020f32/CHANGES.rst; contributor=davidism, display_name=David Lord, commit_sha=728c5e440af704a786384159184f695cf04ecbe7, commit_subject=drop support for Python 3.10 (#6168), authored_at=2026-10-07T13:56:05Z, file_path=.github/workflows/tests.yaml, change_status=modified, additions=1, deletions=2, commit_url=https://github.com/pallets/flask/commit/728c5e440af704a786384159184f695cf04ecbe7, file_url=https://github.com/pallets/flask/blob/d086db856be187255b8ec61ef409357393020f32/.github/workflows/tests.yaml",
+      "answer_match": true,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "contributor_changes",
+      "actual_tool": "contributor_changes",
+      "execution_mode": "mcp",
+      "latency_ms": 7644.63,
+      "tool_match": true,
+      "requires_relationship_proof": false,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 20,
+        "expected_answer_facts": [
+          "src/flask/app.py"
+        ],
+        "expected_evidence_facts": [
+          "src/flask/app.py"
+        ],
+        "max_hops": 0,
+        "relationships_seen": [],
+        "required_relationships": []
+      }
+    },
+    {
+      "case_id": "snapshot-overview",
+      "system": "repobrain",
+      "question": "Give me a repository snapshot overview",
+      "category": "snapshot",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "The repository snapshot is verified and contains the following facts:\n\n* The repository is \"pallets/flask\" and is located at \"https://github.com/pallets/flask\".\n* The snapshot ID is \"pallets-flask-d086db856be1\".\n* The commit SHA associated with this snapshot is \"d086db856be187255b8ec61ef409357393020f32\".\n* The snapshot was captured at \"2026-10-18T07:16:10.839165Z\".\n* The repository contains 236 files.\n* The repository has 25 commits.\n* The snapshot URL is \"https://github.com/pallets/flask/tree/d086db856be187255b8ec61ef409357393020f32\".\n\nEvidence\ntool=snapshot_overview\nsnapshot_id=pallets-flask-d086db856be1",
+      "answer_match": true,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "snapshot_overview",
+      "actual_tool": "snapshot_overview",
+      "execution_mode": "mcp",
+      "latency_ms": 6825.41,
+      "tool_match": true,
+      "requires_relationship_proof": false,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 2,
+        "expected_answer_facts": [
+          "pallets/flask"
+        ],
+        "expected_evidence_facts": [
+          "pallets/flask"
+        ],
+        "max_hops": 0,
+        "relationships_seen": [],
+        "required_relationships": []
+      }
+    },
+    {
+      "case_id": "impact-app",
+      "system": "repobrain",
+      "question": "What files may be affected if src/flask/app.py changes?",
+      "category": "multi-hop-impact",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "Files affected through statically extracted Python dependencies:\n- src/flask/__init__.py (1 hop(s)); path: src/flask/__init__.py -> src/flask/app.py\n- src/flask/cli.py (1 hop(s)); path: src/flask/cli.py -> src/flask/app.py\n- src/flask/ctx.py (1 hop(s)); path: src/flask/ctx.py -> src/flask/app.py\n- src/flask/globals.py (1 hop(s)); path: src/flask/globals.py -> src/flask/app.py\n- src/flask/sessions.py (1 hop(s)); path: src/flask/sessions.py -> src/flask/app.py\n- src/flask/testing.py (1 hop(s)); path: src/flask/testing.py -> src/flask/app.py\n- src/flask/__main__.py (2 hop(s)); path: src/flask/__main__.py -> src/flask/cli.py -> src/flask/app.py\n- src/flask/blueprints.py (2 hop(s)); path: src/flask/blueprints.py -> src/flask/cli.py -> src/flask/app.py\n- src/flask/debughelpers.py (2 hop(s)); path: src/flask/debughelpers.py -> src/flask/globals.py -> src/flask/app.py\n- src/flask/helpers.py (2 hop(s)); path: src/flask/helpers.py -> src/flask/globals.py -> src/flask/app.py\n- src/flask/json/__init__.py (2 hop(s)); path: src/flask/json/__init__.py -> src/flask/globals.py -> src/flask/app.py\n- src/flask/logging.py (2 hop(s)); path: src/flask/logging.py -> src/flask/globals.py -> src/flask/app.py\n- src/flask/sansio/app.py (2 hop(s)); path: src/flask/sansio/app.py -> src/flask/ctx.py -> src/flask/app.py\n- src/flask/templating.py (2 hop(s)); path: src/flask/templating.py -> src/flask/ctx.py -> src/flask/app.py\n- src/flask/views.py (2 hop(s)); path: src/flask/views.py -> src/flask/globals.py -> src/flask/app.py\n- src/flask/wrappers.py (2 hop(s)); path: src/flask/wrappers.py -> src/flask/globals.py -> src/flask/app.py\n- src/flask/config.py (3 hop(s)); path: src/flask/config.py -> src/flask/sansio/app.py -> src/flask/ctx.py -> src/flask/app.py\n- src/flask/json/provider.py (3 hop(s)); path: src/flask/json/provider.py -> src/flask/sansio/app.py -> src/flask/ctx.py -> src/flask/app.py\n- src/flask/json/tag.py (3 hop(s)); path: src/flask/json/tag.py -> src/flask/json/__init__.py -> src/flask/globals.py -> src/flask/app.py\n- src/flask/sansio/blueprints.py (3 hop(s)); path: src/flask/sansio/blueprints.py -> src/flask/sansio/app.py -> src/flask/ctx.py -> src/flask/app.py\n- src/flask/sansio/scaffold.py (3 hop(s)); path: src/flask/sansio/scaffold.py -> src/flask/templating.py -> src/flask/ctx.py -> src/flask/app.py\n\nWarnings: Dependency edges are statically extracted from Python imports; runtime and dynamic imports are not verified.\n\nEvidence: tool=impact_analysis; snapshot_id=pallets-flask-d086db856be1",
+      "answer_match": true,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "impact_analysis",
+      "actual_tool": "impact_analysis",
+      "execution_mode": "mcp",
+      "latency_ms": 6968.98,
+      "tool_match": true,
+      "requires_relationship_proof": true,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 22,
+        "expected_answer_facts": [
+          "src/flask/__init__.py",
+          "src/flask/cli.py"
+        ],
+        "expected_evidence_facts": [
+          "src/flask/__init__.py",
+          "src/flask/cli.py"
+        ],
+        "max_hops": 3,
+        "relationships_seen": [
+          "python_import"
+        ],
+        "required_relationships": [
+          "python_import"
+        ]
+      }
+    },
+    {
+      "case_id": "reviewers-app",
+      "system": "repobrain",
+      "question": "Who should review changes to src/flask/app.py?",
+      "category": "reviewer-recommendation",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "Suggested reviewers from file-change and verified pull-request review history:\n1. David Lord (davidism); coverage=1/1, commits=5, reviews=0, approvals=0, score=0.5638\n   files: src/flask/app.py\n2. chiragjangiir (chiragjangiir); coverage=0/1, commits=0, reviews=1, approvals=0, score=0.4957\n   files: src/flask/app.py\n3. lkk7 (lkk7); coverage=1/1, commits=1, reviews=0, approvals=0, score=0.4856\n   files: src/flask/app.py\n4. ege-arhan (ege-arhan); coverage=0/1, commits=0, reviews=1, approvals=0, score=0.4787\n   files: src/flask/app.py\n5. yash1648 (yash1648); coverage=0/1, commits=0, reviews=1, approvals=0, score=0.4786\n   files: src/flask/app.py\n\nWarnings: Recommendations combine authored file-change history with verified review history when available.; Bot exclusion is based on login-name heuristics and may be incomplete.\n\nEvidence: tool=suggest_reviewers; snapshot_id=pallets-flask-d086db856be1",
+      "answer_match": true,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "suggest_reviewers",
+      "actual_tool": "suggest_reviewers",
+      "execution_mode": "mcp",
+      "latency_ms": 6825.74,
+      "tool_match": true,
+      "requires_relationship_proof": true,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 10,
+        "expected_answer_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "expected_evidence_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "max_hops": 0,
+        "relationships_seen": [],
+        "required_relationships": [
+          "CHANGED",
+          "AUTHORED_BY"
+        ]
+      }
+    },
+    {
+      "case_id": "decision-automatic-options",
+      "system": "repobrain",
+      "question": "Why was the automatic options route design chosen?",
+      "category": "decision-tracing",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "Decision candidates supported by repository discussion evidence:\n1. Also moves the static view out instead of using a lambda and weakref, to match how this new view is handled. (status=candidate, confidence=0.75, source=pull_request github:pull:pallets/flask:5918)\n   evidence: Also moves the static view out instead of using a lambda and weakref, to match how this new view is handled.\n2. Can be updated to do `except DuplicateRuleError` instead of `Exception` once Werkzeug 3.2 is out. (status=candidate, confidence=0.75, source=pull_request github:pull:pallets/flask:5918)\n   evidence: Can be updated to do `except DuplicateRuleError` instead of `Exception` once Werkzeug 3.2 is out.\n\nWarnings: Decision results are candidates extracted from explicit discussion cue phrases; they are not authoritative architectural records by themselves.; Supersession is reported only when an explicit source reference produced a graph relationship.\n\nEvidence: tool=trace_decision; snapshot_id=pallets-flask-d086db856be1",
+      "answer_match": true,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "trace_decision",
+      "actual_tool": "trace_decision",
+      "execution_mode": "mcp",
+      "latency_ms": 5865.78,
+      "tool_match": true,
+      "requires_relationship_proof": true,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 1,
+        "expected_answer_facts": [
+          "static view",
+          "github:pull:pallets/flask:5918"
+        ],
+        "expected_evidence_facts": [
+          "static view",
+          "github:pull:pallets/flask:5918"
+        ],
+        "max_hops": 0,
+        "relationships_seen": [],
+        "required_relationships": [
+          "SUPPORTED_BY"
+        ]
+      }
+    },
+    {
+      "case_id": "file-change-detail-app",
+      "system": "repobrain",
+      "question": "What exactly changed in src/flask/app.py?",
+      "category": "line-level-evidence",
+      "snapshot_id": "pallets-flask-d086db856be1",
+      "answer": "Based on the provided graph evidence, the changes to `src/flask/app.py` are as follows:\n\n* Addition of 31 lines and deletion of 34 lines in a commit with SHA `329c32b916938d33fec41f40eb7ed854bf0b3e2b` (fix dev).\n* Addition of 2 lines and deletion of 2 lines in a commit with SHA `d73fa1cdcbd8b1465c151db8924ba58b1dd14e35` (fix docs ref).\n* Addition of 7 lines and deletion of 4 lines in a commit with SHA `05e9c6bd630ecf4ec0ec884b1fc7901663737bc7` (Fix `.partition(\":\")` usage on potential IPv6 addresses (#6096)).\n* Addition of 2 lines and deletion of 2 lines in a commit with SHA `514fc6b3e8402e4c646d5284e97a4f0ab50a7c4b` (Merge branch 'stable').\n* Addition of 2 lines and deletion of 2 lines in a commit with SHA `81798b406f97ffe4795d2c9fc18db7db744a96dc` (fix typos).\n* Addition of 7 lines and deletion of 4 lines in a commit with SHA `7203feabf723edae0286ae5dc64fec8ac4c91735` (Fix IPv6 server name parsing).\n\nNote that the changes between the different commits are not explicitly stated, but the patch URLs provide a way to inspect the exact changes.\n\nEvidence:\ntool=file_change_detail\nsnapshot_id=pallets-flask-d086db856be1",
+      "answer_match": true,
+      "evidence_match": true,
+      "has_sources": true,
+      "expected_tool": "file_change_detail",
+      "actual_tool": "file_change_detail",
+      "execution_mode": "mcp",
+      "latency_ms": 10656.45,
+      "tool_match": true,
+      "requires_relationship_proof": false,
+      "relationship_match": true,
+      "warning_match": true,
+      "graph_proof_match": true,
+      "details": {
+        "source_count": 7,
+        "expected_answer_facts": [
+          "fix dev"
+        ],
+        "expected_evidence_facts": [
+          "fix dev"
+        ],
+        "max_hops": 0,
+        "relationships_seen": [],
+        "required_relationships": []
+      }
+    },
+    {
+      "case_id": "file-contributors-app",
+      "system": "baseline-no-graph",
+      "question": "Which contributors changed files matching app.py?",
+      "category": "change-history",
+      "snapshot_id": null,
+      "answer": "I don't have access to repository-specific information. I can provide general information or context, but I won't be able to verify which contributors changed files matching app.py. If you'd like to provide more context or details, I'll do my best to help.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "file_contributors",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 1083.36,
+      "tool_match": false,
+      "requires_relationship_proof": true,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "expected_evidence_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    },
+    {
+      "case_id": "history-app",
+      "system": "baseline-no-graph",
+      "question": "Show the history of src/flask/app.py",
+      "category": "change-history",
+      "snapshot_id": null,
+      "answer": "I don't have direct access to a specific repository or its history. The `app.py` file in a Flask project typically contains the main application configuration and setup.\n\nHowever, I can provide a general idea of how the `app.py` file might have evolved in a typical Flask project.\n\nA typical `app.py` file in a Flask project might look like this:\n```python\nfrom flask import Flask\napp = Flask(__name__)\n\n# Configure the application\napp.config[\"SECRET_KEY\"] = \"secret_key_here\"\napp.config[\"DEBUG\"] = True\n\n# Register routes\nfrom your_app.routes import main_blueprint\napp.register_blueprint(main_blueprint)\n\n# Run the application\nif __name__ == \"__main__\":\n    app.run()\n```\nThis code sets up a basic Flask application with a secret key, debug mode, and registers a main blueprint.\n\nHere's a high-level overview of how the `app.py` file might have evolved over time:\n\n1. Initial setup: The `app.py` file is created with a basic Flask application setup.\n2. Adding routes: New routes are added to the application by importing routes from other modules (e.g., `your_app.routes`).\n3. Configuration: The application configuration is updated to include additional settings, such as secret keys, debug mode, or logging configurations.\n4. Error handling: The `app.py` file might include custom error handlers to catch and handle exceptions.\n5. Testing and debugging: The `app.py` file might include test cases or debug statements to help with testing and debugging the application.\n\nTo see the actual history of a specific `app.py` file, you would need to access the version control system associated with the repository, such as Git. You can use tools like `git log` or `gitk` to view the commit history of the file.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "file_history",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 5940.91,
+      "tool_match": false,
+      "requires_relationship_proof": false,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "davidism"
+        ],
+        "expected_evidence_facts": [
+          "davidism"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    },
+    {
+      "case_id": "contributor-files",
+      "system": "baseline-no-graph",
+      "question": "What files did davidism change?",
+      "category": "change-history",
+      "snapshot_id": null,
+      "answer": "I don't have any information about a \"Davidism\" change. Could you please provide more context or clarify what you are referring to? I'll do my best to help.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "contributor_changes",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 670.78,
+      "tool_match": false,
+      "requires_relationship_proof": false,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "src/flask/app.py"
+        ],
+        "expected_evidence_facts": [
+          "src/flask/app.py"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    },
+    {
+      "case_id": "snapshot-overview",
+      "system": "baseline-no-graph",
+      "question": "Give me a repository snapshot overview",
+      "category": "snapshot",
+      "snapshot_id": null,
+      "answer": "I'm not aware of any specific repository you're referring to. Could you please provide more context or information about the repository you're interested in? This will help me better understand your question and provide a more accurate overview.\n\nIf you're asking about a general concept of a repository snapshot, I can provide a general overview.\n\nA repository snapshot is a point-in-time copy of a repository's contents, typically created at regular intervals (e.g., daily, weekly, or monthly). The snapshot captures the repository's state at that specific moment, including all files, directories, and metadata.\n\nA repository snapshot overview might include:\n\n* Date and time of creation\n* Repository name and path\n* Number of files and directories included\n* File sizes and permissions\n* Changes made since the previous snapshot (if applicable)\n\nPlease provide more context or information about the specific repository you're interested in, and I'll do my best to provide a more detailed and accurate overview.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "snapshot_overview",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 3155.17,
+      "tool_match": false,
+      "requires_relationship_proof": false,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "pallets/flask"
+        ],
+        "expected_evidence_facts": [
+          "pallets/flask"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    },
+    {
+      "case_id": "impact-app",
+      "system": "baseline-no-graph",
+      "question": "What files may be affected if src/flask/app.py changes?",
+      "category": "multi-hop-impact",
+      "snapshot_id": null,
+      "answer": "If `src/flask/app.py` changes, it can potentially affect various files depending on how the code is structured and organized. Here are some files that may be affected:\n\n1. **`src/flask/__init__.py`**: If `app.py` is being imported or used within this file, any changes could impact the initialization of the application.\n2. **`src/flask/routes.py`**: If routes are defined or configured in `app.py`, changes here might affect how routes are defined or registered.\n3. **`src/flask/config.py`**: If configuration settings are loaded or used in `app.py`, any changes could impact the application's configuration.\n4. **`src/flask/models.py`**: If models are defined or used in `app.py`, changes here might affect the structure or behavior of the models.\n5. **`src/flask/services.py`**: If services are defined or used in `app.py`, any changes could impact the application's business logic or external interactions.\n6. **`src/flask/controllers.py`**: If controllers or handlers are defined or used in `app.py`, changes here might affect how requests are handled or responses are generated.\n7. **`src/flask/requirements.txt`**: If dependencies are listed or used in `app.py`, any changes to the dependencies might be reflected in this file.\n8. **`src/flask/__main__.py`**: If a main application entry point is defined in `app.py`, any changes could impact the application's entry point or startup behavior.\n9. **`src/flask tests`**: If tests are written in `app.py` or rely on its functionality, changes here might affect the test suite or testing behavior.\n\nPlease note that the specific files affected would depend on how the code is structured and organized within the repository. Without knowing the exact repository structure and relationships between files, it's difficult to provide a more precise answer.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "impact_analysis",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 5920.95,
+      "tool_match": false,
+      "requires_relationship_proof": true,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "src/flask/__init__.py",
+          "src/flask/cli.py"
+        ],
+        "expected_evidence_facts": [
+          "src/flask/__init__.py",
+          "src/flask/cli.py"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    },
+    {
+      "case_id": "reviewers-app",
+      "system": "baseline-no-graph",
+      "question": "Who should review changes to src/flask/app.py?",
+      "category": "reviewer-recommendation",
+      "snapshot_id": null,
+      "answer": "When it comes to reviewing changes to `src/flask/app.py`, it's generally a good idea to have a team review process in place. Here are some suggested reviewers:\n\n1. **Lead Developer or Technical Lead**: As the primary developer of the application, they should be the first point of contact for code changes. They can review the changes to ensure they align with the project's overall architecture and design.\n2. **Code Reviewer or Pair Programmer**: A dedicated code reviewer or pair programmer can review the changes to ensure the code is clean, readable, and follows established coding standards.\n3. **Quality Assurance (QA) Engineer**: A QA engineer can review the changes to ensure that the functionality works as expected and does not introduce any new bugs or issues.\n\nWho should not review changes to `src/flask/app.py`?\n\n* **End-users**: End-users should not be responsible for reviewing code changes, as they may not have the necessary technical expertise or context to understand the changes.\n* **Non-technical team members**: While non-technical team members may be able to provide high-level feedback, they should not be responsible for reviewing code changes that require technical expertise.\n\nThe ideal review process for `src/flask/app.py` would involve:\n\n* The lead developer or technical lead reviewing the changes to ensure they align with the project's overall architecture and design.\n* A code reviewer or pair programmer reviewing the changes to ensure the code is clean, readable, and follows established coding standards.\n* A QA engineer reviewing the changes to ensure that the functionality works as expected and does not introduce any new bugs or issues.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "suggest_reviewers",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 4803.42,
+      "tool_match": false,
+      "requires_relationship_proof": true,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "expected_evidence_facts": [
+          "davidism",
+          "lkk7"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    },
+    {
+      "case_id": "decision-automatic-options",
+      "system": "baseline-no-graph",
+      "question": "Why was the automatic options route design chosen?",
+      "category": "decision-tracing",
+      "snapshot_id": null,
+      "answer": "I don't have specific information on why the automatic options route design was chosen. Without more context, I couldn't verify the specific circumstances or factors that led to this design choice. If you have more information about the context or the project, I'd be happy to try and help you find an answer.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "trace_decision",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 1044.05,
+      "tool_match": false,
+      "requires_relationship_proof": true,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "static view",
+          "github:pull:pallets/flask:5918"
+        ],
+        "expected_evidence_facts": [
+          "static view",
+          "github:pull:pallets/flask:5918"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    },
+    {
+      "case_id": "file-change-detail-app",
+      "system": "baseline-no-graph",
+      "question": "What exactly changed in src/flask/app.py?",
+      "category": "line-level-evidence",
+      "snapshot_id": null,
+      "answer": "I don't have access to the specific repository or code files, including `src/flask/app.py`. I'm a general-purpose language model, and I don't have the ability to browse or verify changes to external code repositories.\n\nIf you'd like to share the changes you're referring to, I'd be happy to help you understand what might have changed or provide guidance on how to assess the impact of those changes.",
+      "answer_match": false,
+      "evidence_match": false,
+      "has_sources": false,
+      "expected_tool": "file_change_detail",
+      "actual_tool": null,
+      "execution_mode": "baseline",
+      "latency_ms": 1370.99,
+      "tool_match": false,
+      "requires_relationship_proof": false,
+      "relationship_match": false,
+      "warning_match": true,
+      "graph_proof_match": false,
+      "details": {
+        "limitation": "no graph context supplied",
+        "expected_answer_facts": [
+          "fix dev"
+        ],
+        "expected_evidence_facts": [
+          "fix dev"
+        ],
+        "source_count": 0,
+        "max_hops": 0,
+        "relationships_seen": []
+      }
+    }
+  ],
+  "contract_checks": []
+}

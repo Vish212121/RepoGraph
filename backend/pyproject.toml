@@ -1,0 +1,26 @@
+[project]
+name = "repobrain-backend"
+version = "0.1.0"
+description = "FalkorDB foundation for RepoBrain"
+requires-python = ">=3.11"
+dependencies = [
+  "falkordb==1.8.0",
+  "mcp>=2,<3",
+  "starlette>=0.40,<0.47",
+  "fastapi>=0.115,<1.0",
+  "pydantic-settings==2.16.0",
+  "uvicorn>=0.32,<1.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest==8.4.2",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
